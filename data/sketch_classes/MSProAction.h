@@ -1,0 +1,4 @@
+@interface MSProAction : MSBaseAction
+{
+}
+@end

@@ -1,0 +1,2 @@
+@interface NSViewController (LoadViewSwizzling)
+@end

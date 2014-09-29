@@ -1,0 +1,4 @@
+@interface MSReflectionInspectorViewController : MSStylePartInspectorViewController
+{
+}
+@end

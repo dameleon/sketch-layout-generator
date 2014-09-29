@@ -1,0 +1,4 @@
+@interface MSBitmapLayerSection : MSLayerSection
+{
+}
+@end

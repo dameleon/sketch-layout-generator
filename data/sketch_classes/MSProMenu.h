@@ -1,0 +1,4 @@
+@interface MSProMenu : NSMenu
+{
+}
+@end

@@ -1,0 +1,183 @@
+@interface MSLayer : _MSLayer <NSCoding, NSCopying>
+{
+long long skipDrawingSelectionCounter;	// 8 = 0x8
+struct CGRect relativeRect;	// 16 = 0x10
+GKRect *frameAtMouseDown;	// 48 = 0x30
+BOOL _isHovering;	// 56 = 0x38
+BOOL _isAlreadyCaching;	// 57 = 0x39
+BOOL _isSelected;	// 58 = 0x3a
+long long _layerListExpandedType;	// 64 = 0x40
+MSAbsoluteRect *_absoluteRect;	// 72 = 0x48
+NSAffineTransform *_cachedTransform;	// 80 = 0x50
+NSArray *_cachedAncestorTransforms;	// 88 = 0x58
+id _undoRefreshTimer;	// 96 = 0x60
+struct CGRect _lightweightAbsoluteRect;	// 104 = 0x68
+struct CGRect _cachedDirtyRectForBounds;	// 136 = 0x88
+}
++ (void)hideSelectionDisabledInBlock:(CDUnknownBlockType)arg1;
++ (void)makeLayerNamesUnique:(id)arg1;
++ (id)layersSeparatedByGroups:(id)arg1;
+@property(nonatomic) struct CGRect cachedDirtyRectForBounds; // @synthesize cachedDirtyRectForBounds=_cachedDirtyRectForBounds;
+@property(retain, nonatomic) id undoRefreshTimer; // @synthesize undoRefreshTimer=_undoRefreshTimer;
+@property(retain, nonatomic) NSArray *cachedAncestorTransforms; // @synthesize cachedAncestorTransforms=_cachedAncestorTransforms;
+@property(retain, nonatomic) NSAffineTransform *cachedTransform; // @synthesize cachedTransform=_cachedTransform;
+@property(retain, nonatomic) MSAbsoluteRect *absoluteRect; // @synthesize absoluteRect=_absoluteRect;
+@property(nonatomic) struct CGRect lightweightAbsoluteRect; // @synthesize lightweightAbsoluteRect=_lightweightAbsoluteRect;
+@property(nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
+@property(nonatomic) long long layerListExpandedType; // @synthesize layerListExpandedType=_layerListExpandedType;
+@property(nonatomic) BOOL isAlreadyCaching; // @synthesize isAlreadyCaching=_isAlreadyCaching;
+@property(nonatomic) BOOL isHovering; // @synthesize isHovering=_isHovering;
+- (void).cxx_destruct;
+- (void)groupDidRemoveThisLayer:(id)arg1;
+- (void)groupDidAddThisLayer:(id)arg1;
+- (BOOL)canRotate;
+- (BOOL)isFrameEqualForSync:(id)arg1;
+- (BOOL)containsSymbols;
+- (BOOL)parentOrSelfIsSymbol;
+- (BOOL)isLayerExportable;
+- (BOOL)isValidChild:(id)arg1;
+- (void)assignWithOriginalLinkedStyleIfNecessary;
+- (id)layerWithId:(id)arg1;
+- (BOOL)shouldRenderInTransparencyLayer;
+- (BOOL)shouldForceRendering;
+@property(copy, nonatomic) GKRect *frameInArtboard; // @dynamic frameInArtboard;
+- (BOOL)calculateHasBlendedLayer;
+- (id)currentHandlerKey;
+- (BOOL)shouldBeSelectedInLayerList;
+- (BOOL)canBeSelectedOnCanvas;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)setNilValueForKey:(id)arg1;
+- (BOOL)canBeTransformed;
+- (void)setRotation:(double)arg1;
+- (void)setIsFlippedVertical:(BOOL)arg1;
+- (void)setIsFlippedHorizontal:(BOOL)arg1;
+- (struct CGSize)minimumSize;
+- (void)layerSizeDidChangeFromCorner:(long long)arg1;
+- (void)multiplyBy:(double)arg1;
+- (BOOL)isPartOfClippingMask;
+- (void)clearPositionCachesIncludingLocalCaches:(BOOL)arg1;
+- (void)clearPositionCaches;
+- (void)concatAncestorTransforms;
+- (id)calculateAncestorTransforms;
+- (id)ancestorTransforms;
+- (id)transform;
+- (id)transformForRect:(struct CGRect)arg1;
+- (struct _CHTransformStruct)transformStruct;
+- (struct CGRect)convertRectToAbsoluteCoordinates:(struct CGRect)arg1;
+- (struct CGPoint)convertPointToLayerCoordinates:(struct CGPoint)arg1;
+- (struct CGPoint)convertPointToParentRoot:(struct CGPoint)arg1;
+- (struct CGPoint)convertPointToAbsoluteCoordinates:(struct CGPoint)arg1;
+- (struct CGPoint)convertPointToViewCoordinates:(struct CGPoint)arg1;
+- (id)children;
+- (id)ancestors;
+- (void)upgradeShapes;
+- (void)markLayerAsChangedPassingTest:(CDUnknownBlockType)arg1;
+- (id)closestClippingLayer;
+- (id)inspectorViewControllers;
+- (id)inspectorViewControllerNames;
+- (id)parentArtboard;
+- (id)parentRoot;
+- (id)currentPage;
+- (id)parentPage;
+- (BOOL)shouldDrawArtisticStrokeForPath:(id)arg1;
+- (BOOL)hasClippingMask;
+- (BOOL)handleDoubleClick;
+- (void)removeFromParent;
+- (void)handleLightweightObjectChangeForKey:(id)arg1 sender:(id)arg2;
+- (BOOL)isUndoingModelObjectChange;
+- (void)refreshForPropertyChanged:(id)arg1;
+- (void)propertyDidChange:(id)arg1;
+- (void)rectDidChange;
+- (void)rectWillChange;
+- (void)moveInLayerTreeInBlock:(CDUnknownBlockType)arg1;
+- (void)changeColor:(id)arg1;
+- (BOOL)closePath;
+- (id)bezierPathWithTransforms;
+- (id)bezierPath;
+- (id)handlerName;
+- (struct CGRect)rectForBitmapCaching;
+- (id)absoluteDirtyRect;
+- (struct CGRect)affectedFrameOfLayer;
+- (struct CGRect)baseRectByAccountingForStyleSize:(struct CGRect)arg1;
+- (struct CGRect)rectByAccountingForStyleSize:(struct CGRect)arg1;
+- (struct CGRect)dirtyRectForRect:(struct CGRect)arg1;
+- (struct CGRect)dirtyRectForBounds;
+- (struct CGRect)dirtyRectForFrame;
+- (void)refreshViewsWithMask:(unsigned long long)arg1;
+- (void)refreshOfType:(unsigned long long)arg1 rect:(struct CGRect)arg2;
+- (struct CGRect)translateRectFromBoundsToFrame:(struct CGRect)arg1;
+- (void)markLayerDirtyOfType:(unsigned long long)arg1 margins:(struct CGSize)arg2;
+- (void)markLayerDirtyOfType:(unsigned long long)arg1;
+- (void)layerDidChange;
+- (id)cachedImageSetUsingBlock:(CDUnknownBlockType)arg1;
+- (id)cachedImage;
+- (void)clearCachedImage;
+- (BOOL)hitTest:(struct CGPoint)arg1;
+- (BOOL)isTooSmallForHitTesting;
+- (long long)selectedCorner:(struct CGPoint)arg1 zoom:(double)arg2;
+- (void)select:(BOOL)arg1 byExpandingSelection:(BOOL)arg2 showSelection:(BOOL)arg3;
+- (void)select:(BOOL)arg1 byExpandingSelection:(BOOL)arg2;
+- (BOOL)containsSelectedItem;
+- (void)recordRelativeRect;
+- (void)resetRelativeRect;
+- (struct CGRect)relativeRect;
+- (void)setFrameAtMouseDown:(id)arg1;
+- (struct CGRect)boundsRect;
+- (id)bounds;
+- (id)frameAtMouseDown;
+- (void)enableSelectionDelayedAndRelease;
+- (void)hideSelectionTemporarily;
+- (void)showSelectionImmediately;
+- (id)valueForUndefinedKey:(id)arg1;
+@property(nonatomic) double proportions; // @dynamic proportions;
+@property(nonatomic) BOOL constrainProportions; // @dynamic constrainProportions;
+- (id)bezierPathForHover;
+- (id)colorForHover;
+- (void)drawHoverWithZoom:(double)arg1;
+- (unsigned long long)selectionCornerMask;
+- (BOOL)canOneClickEditLayer;
+- (BOOL)shouldDrawSelection;
+- (struct CGRect)frameForTransforms;
+- (void)recordFrame;
+- (double)zoomValue;
+- (id)renderBitmapEffects:(id)arg1;
+- (BOOL)hasActiveBackgroundBlur;
+- (BOOL)hasBitmapStylesEnabled;
+- (void)prepareObjectCopy:(id)arg1;
+- (id)duplicate;
+- (id)layersSharingStyle:(id)arg1;
+- (id)rootForNameUniqueing;
+- (id)namesOfAllLayersInGroup:(id)arg1;
+- (void)findUniqueNameWithNames:(id)arg1;
+- (void)makeNameUnique;
+- (id)defaultName;
+- (void)setFrame:(id)arg1;
+- (id)objectIDsForSelfAncestorsAndChildren;
+- (id)defaultStyle;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)objectDidInit;
+- (void)initEmptyObject;
+- (id)CSSAttributes;
+- (id)CSSRotation;
+- (id)CSSAttributeString;
+- (BOOL)isExpandedInLayerList;
+- (id)previewFillColor:(BOOL)arg1;
+- (id)previewBorderColor:(BOOL)arg1;
+- (void)drawPreviewInRect:(struct CGRect)arg1 honourSelected:(BOOL)arg2;
+- (void)writeBitmapImageToFile:(id)arg1;
+- (void)migratePropertiesFromV33OrEarlierWithCoder:(id)arg1;
+- (unsigned long long)decodingConversionForProperty:(id)arg1;
+- (void)initLegacyWithCoder:(id)arg1;
+- (Class)rendererClass;
+- (void)writeSVGToElement:(id)arg1 withExporter:(id)arg2;
+- (void)appendBaseTranslation:(id)arg1 exporter:(id)arg2;
+- (id)relativeRectWithExporter:(id)arg1;
+- (struct CGPoint)layerOffsetWithExporter:(id)arg1;
+- (void)addSVGAttributes:(id)arg1 forExporter:(id)arg2;
+- (id)svgStyle;
+- (void)addGradientsToDocument:(id)arg1;
+- (void)addChildrenToElement:(id)arg1 exporter:(id)arg2;
+- (id)addContentToElement:(id)arg1 attributes:(id)arg2 exporter:(id)arg3 action:(unsigned long long *)arg4;
+- (BOOL)shouldIncludeLayerInSlice:(id)arg1;
+- (BOOL)intersectsSlice:(id)arg1;
+@end

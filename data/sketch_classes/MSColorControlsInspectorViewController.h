@@ -1,0 +1,4 @@
+@interface MSColorControlsInspectorViewController : MSStylePartInspectorViewController
+{
+}
+@end

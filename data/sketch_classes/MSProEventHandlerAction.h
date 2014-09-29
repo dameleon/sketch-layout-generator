@@ -1,0 +1,4 @@
+@interface MSProEventHandlerAction : MSEventHandlerAction
+{
+}
+@end
